@@ -46,12 +46,12 @@ jobs:
         dotnet-version: 7.0.x
         include-prerelease: true
 
-    - name: GHCR login
-      uses: actions-hub/docker/login@master
-      env:
-        DOCKER_REGISTRY_URL: ghcr.io
-        DOCKER_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.CONTAINER_CREDS }}
+    #- name: GHCR login
+    #  uses: actions-hub/docker/login@master
+    #  env:
+    #    DOCKER_REGISTRY_URL: ghcr.io
+    #    DOCKER_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
+    #    DOCKER_PASSWORD: ${{ secrets.CONTAINER_CREDS }}
 
     - name: ACR login
       uses: azure/docker-login@v1
@@ -75,12 +75,12 @@ jobs:
     - name: Tag container
       uses: actions-hub/docker/cli@master
       with:
-        args: tag whatstheweather:latest ghcr.io/timheuer/whatstheweather:latest
+        args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI}}/whatstheweather:latest #ghcr.io/timheuer/whatstheweather:latest
 
-    - name: Push to GHCR
-      uses: actions-hub/docker/cli@master
-      with:
-        args: push ghcr.io/timheuer/whatstheweather:latest
+    #- name: Push to GHCR
+    #  uses: actions-hub/docker/cli@master
+    #  with:
+    #    args: push ghcr.io/timheuer/whatstheweather:latest
 
     - name: Push to ACR
       uses: actions-hub/docker/cli@master
