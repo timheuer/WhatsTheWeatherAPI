@@ -46,12 +46,19 @@ jobs:
         dotnet-version: 7.0.x
         include-prerelease: true
 
-    - name: Registry login
+    - name: GHCR login
       uses: actions-hub/docker/login@master
       env:
         DOCKER_REGISTRY_URL: ghcr.io
         DOCKER_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.CONTAINER_CREDS }}
+
+    - name: ACR login
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_LOGIN_URI }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_CREDS }}
 
     - name: Restore
       run: dotnet restore
@@ -74,3 +81,8 @@ jobs:
       uses: actions-hub/docker/cli@master
       with:
         args: push ghcr.io/timheuer/whatstheweather:latest
+
+    - name: Push to ACR
+      uses: actions-hub/docker/cli@master
+      with:
+        args: push ${{ secrets.ACR_LOGIN_URI}}/whatstheweather:latest
