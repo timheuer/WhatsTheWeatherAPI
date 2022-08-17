@@ -68,21 +68,9 @@ jobs:
     - name: Tag container
       uses: actions-hub/docker/cli@master
       with:
-        args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI}}/whatstheweather:latest #ghcr.io/timheuer/whatstheweather:latest
+        args: tag whatstheweather:latest ghcr.io/timheuer/whatstheweather:latest
 
-    #- name: Push to GHCR
-    #  uses: actions-hub/docker/cli@master
-    #  with:
-    #    args: push ghcr.io/timheuer/whatstheweather:latest
-
-    - name: ACR login
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ secrets.ACR_LOGIN_URI }}
-        username: ${{ secrets.ACR_USERNAME }}
-        password: ${{ secrets.ACR_CREDS }}
-
-    - name: Push to ACR
+    - name: Push to GHCR
       uses: actions-hub/docker/cli@master
       with:
-        args: push ${{ secrets.ACR_LOGIN_URI}}/whatstheweather:latest
+        args: push ghcr.io/timheuer/whatstheweather:latest
