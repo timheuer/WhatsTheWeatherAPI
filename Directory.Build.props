@@ -1,0 +1,15 @@
+﻿<Project>
+	<PropertyGroup>
+		<ContainerImageTag>latest</ContainerImageTag>
+		<PublishProfile>DefaultContainer</PublishProfile>
+		<ContainerImageName>whatstheweather</ContainerImageName>
+		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:7.0-alpine</ContainerBaseImage>
+		<UseAppHost>false</UseAppHost>
+	</PropertyGroup>
+	<ItemGroup>
+		<ContainerPort Include="80" Type="tcp" />
+		<ContainerPort Include="443" Type="tcp" />
+		<ContainerLabel Include="com.microsoft.visual-studio.project-name" Value="$(MSBuildProjectName)" />
+		<ContainerLabel Include="com.microsoft.created-by" Value="dotnet-sdk" />
+	</ItemGroup>
+</Project>
