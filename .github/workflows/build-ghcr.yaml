@@ -55,6 +55,9 @@ jobs:
 
     - name: Restore
       run: dotnet restore
+      env:
+        GITHUB_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
+        GITHUB_TOKEN: ${{ secrets.CONTAINER_CREDS }}
 
     - name: Build and Publish
       run: dotnet publish --os linux --arch x64 --configuration Release 
