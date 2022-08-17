@@ -70,7 +70,7 @@ jobs:
       with:
         args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:latest
 
-    - name: Push to GHCR
+    - name: Push to ACR
       uses: actions-hub/docker/cli@master
       with:
         args: push ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:latest
