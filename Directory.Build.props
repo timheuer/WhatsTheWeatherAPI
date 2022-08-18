@@ -11,5 +11,9 @@
 		<ContainerPort Include="443" Type="tcp" />
 		<ContainerLabel Include="com.microsoft.visual-studio.project-name" Value="$(MSBuildProjectName)" />
 		<ContainerLabel Include="com.microsoft.created-by" Value="dotnet-sdk" />
+		<ContainerLabel Include="dotnet-sdk-version" Value="$(NetCoreSDKVersion)" />
+		<ContainerLabel Include="org.opencontainers.image.authors" Value="$(Authors)" />
+		<ContainerLabel Include="org.opencontainers.image.created" Value='$([System.DateTime]::UtcNow.ToString("o"))' />
+		<ContainerLabel Include="org.opencontainers.image.description" Value="$(Description)" />
 	</ItemGroup>
 </Project>
