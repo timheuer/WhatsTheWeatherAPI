@@ -7,8 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
 
 var app = builder.Build();
+
+var logger = app.Logger;
 
 // Configure the HTTP request pipeline.
     app.UseSwagger();
@@ -23,6 +27,7 @@ var summaries = new[]
 
 app.MapGet("/env", ()=>
 {
+    logger.LogInformation("OS Description: {0}", RuntimeInformation.OSDescription);
     var envData = $"OSDescription:{RuntimeInformation.OSDescription};OSName:{Environment.OSVersion}";
     return envData;
 });
