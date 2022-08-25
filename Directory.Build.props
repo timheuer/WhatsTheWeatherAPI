@@ -4,6 +4,7 @@
 		<PublishProfile>DefaultContainer</PublishProfile>
 		<ContainerImageName>whatstheweather</ContainerImageName>
 		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:7.0-alpine</ContainerBaseImage>
+		<Configuration>Release</Configuration>
 		<UseAppHost>false</UseAppHost>
 	</PropertyGroup>
 	<ItemGroup>
