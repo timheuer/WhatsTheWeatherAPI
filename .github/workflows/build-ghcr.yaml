@@ -68,9 +68,14 @@ jobs:
     - name: Tag container
       uses: actions-hub/docker/cli@master
       with:
-        args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:latest
+        args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:${{ github.sha }}
 
-    - name: Push to ACR
+    - name: Push to ACR tagged
+      uses: actions-hub/docker/cli@master
+      with:
+        args: push ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:${{ github.sha }}
+
+    - name: Push to ACR latest
       uses: actions-hub/docker/cli@master
       with:
         args: push ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:latest
