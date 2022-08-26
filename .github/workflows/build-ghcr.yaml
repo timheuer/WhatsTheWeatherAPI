@@ -95,19 +95,19 @@ jobs:
     - name: (GHCR) Tag container sha
       uses: actions-hub/docker/cli@master
       with:
-        args: tag whatstheweather:latest ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:${{ github.sha }}
+        args: tag whatstheweather:latest ${{ secrets.GHCR_LOGIN_URI }}/${{ secrets.CONTAINER_USERNAME }}/whatstheweather:${{ github.sha }}
 
     - name: Push to GHCR tagged
       uses: actions-hub/docker/cli@master
       with:
-        args: push ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:${{ github.sha }}
+        args: push ${{ secrets.GHCR_LOGIN_URI }}/${{ secrets.CONTAINER_USERNAME }}/whatstheweather:${{ github.sha }}
 
     - name: (GHCR) Tag container latest
       uses: actions-hub/docker/cli@master
       with:
-        args: tag whatstheweather:latest ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:latest
+        args: tag whatstheweather:latest ${{ secrets.GHCR_LOGIN_URI }}/${{ secrets.CONTAINER_USERNAME }}/whatstheweather:latest
 
     - name: Push to GHCR latest
       uses: actions-hub/docker/cli@master
       with:
-        args: push ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:latest
+        args: push ${{ secrets.GHCR_LOGIN_URI }}/${{ secrets.CONTAINER_USERNAME }}/whatstheweather:latest
