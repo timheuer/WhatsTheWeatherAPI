@@ -65,7 +65,7 @@ jobs:
         GITHUB_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.CONTAINER_CREDS }}
 
-    - name: Tag container sha
+    - name: (ACR) Tag container sha
       uses: actions-hub/docker/cli@master
       with:
         args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:${{ github.sha }}
@@ -75,7 +75,7 @@ jobs:
       with:
         args: push ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:${{ github.sha }}
 
-    - name: Tag container latest
+    - name: (ACR) Tag container latest
       uses: actions-hub/docker/cli@master
       with:
         args: tag whatstheweather:latest ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:latest
@@ -84,3 +84,30 @@ jobs:
       uses: actions-hub/docker/cli@master
       with:
         args: push ${{ secrets.ACR_LOGIN_URI }}/whatstheweather:latest
+
+    - name: GHCR login
+      uses: actions-hub/docker/login@master
+      env:
+        DOCKER_REGISTRY_URL: ${{ secrets.GHCR_LOGIN_URI }}
+        DOCKER_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.CONTAINER_CREDS }}
+
+    - name: (GHCR) Tag container sha
+      uses: actions-hub/docker/cli@master
+      with:
+        args: tag whatstheweather:latest ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:${{ github.sha }}
+
+    - name: Push to GHCR tagged
+      uses: actions-hub/docker/cli@master
+      with:
+        args: push ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:${{ github.sha }}
+
+    - name: (GHCR) Tag container latest
+      uses: actions-hub/docker/cli@master
+      with:
+        args: tag whatstheweather:latest ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:latest
+
+    - name: Push to GHCR latest
+      uses: actions-hub/docker/cli@master
+      with:
+        args: push ${{ secrets.GHCR_LOGIN_URI }}/{{ secrets.CONTAINER_USERNAME }}/whatstheweather:latest
