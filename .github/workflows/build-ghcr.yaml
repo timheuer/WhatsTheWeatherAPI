@@ -59,11 +59,8 @@ jobs:
         GITHUB_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.CONTAINER_CREDS }}
 
-    - name: Build
-      run: dotnet build --no-restore --configuration Release --os linux --arch x64
-
     - name: Publish
-      run: dotnet publish --os linux --arch x64 --configuration Release --no-build
+      run: dotnet publish --os linux --arch x64 --configuration Release
       env:
         GITHUB_USERNAME: ${{ secrets.CONTAINER_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.CONTAINER_CREDS }}
