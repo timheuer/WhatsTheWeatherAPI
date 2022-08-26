@@ -60,7 +60,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.CONTAINER_CREDS }}
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration Release --os linux --arch x64
 
     - name: Publish
       run: dotnet publish --os linux --arch x64 --configuration Release --no-build
