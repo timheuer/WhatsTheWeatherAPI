@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Description>A simple API to show the weather forecast for a bunch of fake cities.</Description>
     <Copyright></Copyright>
+    <RepositoryUrl>https://github.com/timheuer/WhatsTheWeatherAPI</RepositoryUrl>
+    <Title></Title>
   </PropertyGroup>
 
   <ItemGroup>

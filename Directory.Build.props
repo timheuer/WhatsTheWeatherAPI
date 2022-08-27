@@ -15,5 +15,6 @@
 		<ContainerLabel Include="dotnet-sdk-version" Value="$(NetCoreSDKVersion)" />
 		<ContainerLabel Include="org.opencontainers.image.authors" Value="$(Authors)" />
 		<ContainerLabel Include="org.opencontainers.image.description" Value="$(Description)" />
+		<ContainerLabel Include="org.opencontainers.image.source" Value="$(RepositoryUrl)" />
 	</ItemGroup>
 </Project>
