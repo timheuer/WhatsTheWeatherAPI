@@ -5,7 +5,8 @@
 		<ContainerImageName>whatstheweather</ContainerImageName>
 		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:7.0-alpine</ContainerBaseImage>
 		<Configuration>Release</Configuration>
-		<UseAppHost>false</UseAppHost>
+		<UseAppHost>true</UseAppHost>
+		<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerPort Include="80" Type="tcp" />
