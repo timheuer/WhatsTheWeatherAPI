@@ -34,6 +34,7 @@ app.MapGet("/env", ()=>
 
 app.MapGet("/weatherforecast", () =>
 {
+    logger.LogInformation("A forecast was requested...");
     var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
@@ -42,6 +43,7 @@ app.MapGet("/weatherforecast", () =>
             summaries[Random.Shared.Next(summaries.Length)]
         ))
         .ToArray();
+    logger.LogInformation($"Forecast: {forecast}");
     return forecast;
 })
 .WithName("GetWeatherForecast")
