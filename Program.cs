@@ -14,9 +14,9 @@ var app = builder.Build();
 
 var logger = app.Logger;
 
-// Configure the HTTP request pipeline.
-    app.UseSwagger();
-    app.UseSwaggerUI();
+// Configure the HTTP request pipeline. 
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

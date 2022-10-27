@@ -1,0 +1,16 @@
+﻿@hostname = localhost
+@port = 5226
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+# Weather GET
+GET https://{{host}}/weatherforecast
+###
+
+# Weather POST
+POST https://{{host}}/weatherforecast
+
+###
+
+# Environment
+GET https://{{host}}/env

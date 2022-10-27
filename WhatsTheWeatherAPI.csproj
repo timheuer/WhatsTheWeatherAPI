@@ -8,6 +8,7 @@
     <Copyright></Copyright>
     <RepositoryUrl>https://github.com/timheuer/WhatsTheWeatherAPI</RepositoryUrl>
     <Title></Title>
+    <UserSecretsId>198d1766-a402-4f72-b93f-2a33cc028f76</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
